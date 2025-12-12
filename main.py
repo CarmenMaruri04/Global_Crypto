@@ -65,7 +65,7 @@ def menu_principal(): #Menu principal con todas sus opciones
         
         borrar_texto()  
 
-        etiqueta_nivel_intermedio = tk.Label(root, text = "Para quienes buscan un desafio que vaya mas alla de lo basico. \nEste nivel esta pensado para quienes ya tienen cierta familiaridad con la criptografia o simplemente desean poner a prueba su ingenio con ejercicios mas elaborados. Aqui los acertijos requieren una observacion mas aguda, donde las pistas son menos evidentes y la solucion exige conectar ideas de forma creativa.")
+        etiqueta_nivel_intermedio = tk.Label(root, text = "Para quienes buscan un desafio que vaya mas alla de lo basico. \nEste nivel esta pensado para quienes ya tienen cierta familiaridad con la criptografia o simplemente desean poner a prueba su ingenio con ejercicios mas elaborados. \nAqui los acertijos requieren una observacion mas aguda, donde las pistas son menos evidentes y la solucion exige conectar ideas de forma creativa.")
         etiqueta_nivel_intermedio.pack()
         boton_opcion2_1 = tk.Button(root, text = "Opcion 1") #Falta comando para clickar esta opcion.
         boton_opcion2_1.pack() 
