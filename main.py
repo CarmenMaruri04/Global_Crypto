@@ -4,6 +4,7 @@ from tkinter import messagebox #Importamos messagebox para el easteregg
 
 def menu_principal(): #Menu principal con todas sus opciones
     def nivel_facil(): #Al haber escogido nivel facil se desarrolla lo siguiente:
+
         def borrar_texto(): #Se borra el texto del menu principal
             etiqueta_main.config(text = "")
         def menu():#Se crea una copia del menu principal para al querer volver se vuelva a poder escoger otro nivel
@@ -21,7 +22,7 @@ def menu_principal(): #Menu principal con todas sus opciones
             etiqueta_nivel_facil.config(text = "")
             boton_misionhospital.destroy()
             boton_archivofantasma.destroy()
-            boton_salir_menuprincipla.destroy()
+            boton_salir_menuprincipal.destroy()
         boton_nivel_facil.destroy()
         boton_nivel_intermedio.destroy()
         boton_nivel_dificil.destroy()
@@ -35,14 +36,52 @@ def menu_principal(): #Menu principal con todas sus opciones
         boton_misionhospital.pack() 
         boton_archivofantasma = tk.Button(root, text = "Archivo fantasma") #Falta comando para clickar esta opcion.
         boton_archivofantasma.pack()
-        boton_salir_menuprincipla = tk.Button(root, text = "Salir al menu principal", command = menu) #Se sale para escoger otro nivel o salir.
-        boton_salir_menuprincipla.pack()
-    
+        boton_salir_menuprincipal = tk.Button(root, text = "Salir al menu principal", command = menu) #Se sale para escoger otro nivel o salir.
+        boton_salir_menuprincipal.pack()
+    def nivel_intermedio():
+        def borrar_texto(): #Se borra el texto del menu principal
+            etiqueta_main.config(text = "")
+        def menu():#Se crea una copia del menu principal para al querer volver se vuelva a poder escoger otro nivel
+            etiqueta_main = tk.Label(root, text = "Bienvenido a GlobalCrypto \nGlobalCrypto es tu puerta de entrada al mundo de la criptografia y la seguridad digital, presentado de una forma sencilla y divertida. \nDesde el menu principal podras acceder a diferentes misiones y retos disenados para que aprendas paso a paso, poniendo en practica tus conocimientos mientras disfrutas de una experiencia interactiva.\nEl programa esta organizado en niveles de dificultad (facil, intermedio y dificil), para que avances a tu ritmo y descubras nuevas opciones a medida que progresas. \nCada mision te plantea situaciones reales y dinamicas, como la Mision en el hospital o el Archivo Fantasma, que te ayudaran a comprender como funciona la criptografia en la vida cotidiana.\nGlobalCrypto no es solo una herramienta de aprendizaje: es un espacio donde podras experimentar, equivocarte sin miedo y mejorar tus habilidades de forma entretenida. \nEl menu principal sera tu punto de partida para explorar todo lo que el programa tiene preparado para ti.")
+            etiqueta_main.pack()
+            boton_nivel_facil = tk.Button(root, text = "Nivel Facil", command = nivel_facil) #Falta comando de clicar opcion
+            boton_nivel_facil.pack()
+            boton_nivel_intermedio = tk.Button(root, text = "Nivel Intermedio") #Falta comando de clicar opcion
+            boton_nivel_intermedio.pack()
+            boton_nivel_dificil = tk.Button(root, text = "Nivel Dificil") #Falta comando de clicar opcion
+            boton_nivel_dificil.pack()
+
+            boton_salir = tk.Button(root, text = "Salir", command = root.destroy) #Cerrar ventana
+            boton_salir.pack()
+            etiqueta_nivel_intermedio.config(text = "")
+            boton_opcion2_1.destroy()
+            boton_opcion2_2.destroy()
+            boton_salir_menuprincipal.destroy()
+        boton_nivel_facil.destroy()
+        boton_nivel_intermedio.destroy()
+        boton_nivel_dificil.destroy()
+        boton_salir.destroy()
+        
+        
+        borrar_texto()  
+
+        etiqueta_nivel_intermedio = tk.Label(root, text = "Para quienes buscan un desafio que vaya mas alla de lo basico. \nEste nivel esta pensado para quienes ya tienen cierta familiaridad con la criptografia o simplemente desean poner a prueba su ingenio con ejercicios mas elaborados. Aqui los acertijos requieren una observacion mas aguda, donde las pistas son menos evidentes y la solucion exige conectar ideas de forma creativa.")
+        etiqueta_nivel_intermedio.pack()
+        boton_opcion2_1 = tk.Button(root, text = "Opcion 1") #Falta comando para clickar esta opcion.
+        boton_opcion2_1.pack() 
+        boton_opcion2_2 = tk.Button(root, text = "Opcion 2") #Falta comando para clickar esta opcion.
+        boton_opcion2_2.pack()
+        boton_salir_menuprincipal = tk.Button(root, text = "Salir al menu principal", command = menu) #Se sale para escoger otro nivel o salir.
+        boton_salir_menuprincipal.pack()
+
+
+
+
     etiqueta_main = tk.Label(root, text = "Bienvenido a GlobalCrypto \nGlobalCrypto es tu puerta de entrada al mundo de la criptografia y la seguridad digital, presentado de una forma sencilla y divertida. \nDesde el menu principal podras acceder a diferentes misiones y retos disenados para que aprendas paso a paso, poniendo en practica tus conocimientos mientras disfrutas de una experiencia interactiva.\nEl programa esta organizado en niveles de dificultad (facil, intermedio y dificil), para que avances a tu ritmo y descubras nuevas opciones a medida que progresas. \nCada mision te plantea situaciones reales y dinamicas, como la Mision en el hospital o el Archivo Fantasma, que te ayudaran a comprender como funciona la criptografia en la vida cotidiana.\nGlobalCrypto no es solo una herramienta de aprendizaje: es un espacio donde podras experimentar, equivocarte sin miedo y mejorar tus habilidades de forma entretenida. \nEl menu principal sera tu punto de partida para explorar todo lo que el programa tiene preparado para ti.")
     etiqueta_main.pack()
     boton_nivel_facil = tk.Button(root, text = "Nivel Facil", command = nivel_facil) #Comando de nivel facil falta las dos opciones de dentro.
     boton_nivel_facil.pack()
-    boton_nivel_intermedio = tk.Button(root, text = "Nivel Intermedio") #Falta comando de clicar opcion
+    boton_nivel_intermedio = tk.Button(root, text = "Nivel Intermedio", command = nivel_intermedio) #Comando de nivel intermedio falta las dos opciones de dentro.
     boton_nivel_intermedio.pack()
     boton_nivel_dificil = tk.Button(root, text = "Nivel Dificil") #Falta comando de clicar opcion
     boton_nivel_dificil.pack()
