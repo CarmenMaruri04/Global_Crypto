@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 ﻿import tkinter as tk #Importamos la interficie grafica que vamos a usar
 from tkinter import ARC, messagebox #Importamos messagebox para el easteregg
+=======
+import tkinter as tk #Importamos la interficie grafica que vamos a usar
+from tkinter import messagebox #Importamos messagebox para el easteregg
+>>>>>>> origin/Develop
 
 
 def menu_principal(): #Menu principal con todas sus opciones
@@ -23,7 +28,10 @@ def menu_principal(): #Menu principal con todas sus opciones
             boton_misionhospital.destroy()
             boton_archivofantasma.destroy()
             boton_salir_menuprincipal.destroy()
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/Develop
         def mision_en_el_hospital():
             def menu_1():#Se crea una copia del menu principal para al querer volver se vuelva a poder escoger otro nivel
                 etiqueta_main = tk.Label(root, text = "Bienvenido a GlobalCrypto \nGlobalCrypto es tu puerta de entrada al mundo de la criptografia y la seguridad digital, presentado de una forma sencilla y divertida. \nDesde el menu principal podras acceder a diferentes misiones y retos disenados para que aprendas paso a paso, poniendo en practica tus conocimientos mientras disfrutas de una experiencia interactiva.\nEl programa esta organizado en niveles de dificultad (facil, intermedio y dificil), para que avances a tu ritmo y descubras nuevas opciones a medida que progresas. \nCada mision te plantea situaciones reales y dinamicas, como la Mision en el hospital o el Archivo Fantasma, que te ayudaran a comprender como funciona la criptografia en la vida cotidiana.\nGlobalCrypto no es solo una herramienta de aprendizaje: es un espacio donde podras experimentar, equivocarte sin miedo y mejorar tus habilidades de forma entretenida. \nEl menu principal sera tu punto de partida para explorar todo lo que el programa tiene preparado para ti.")
@@ -71,6 +79,10 @@ def menu_principal(): #Menu principal con todas sus opciones
                         nombre_hacker_hospital += abecedario[numero_idx]
                         
                 nombre_hacker_hospital = nombre_hacker_hospital.strip().upper()
+<<<<<<< HEAD
+=======
+                print(nombre_hacker_hospital)
+>>>>>>> origin/Develop
                 if nombre_hacker_hospital in input_user_mision_hospital:
                     messagebox.showinfo(
                         message="Muy bien, lo has acertado.\nLa respuesta correcta es:\nHUNTER DARK HACK VEINTISIETE"
@@ -83,6 +95,7 @@ def menu_principal(): #Menu principal con todas sus opciones
             boton_enter.pack()
             boton_salir_menuprincipal_1 = tk.Button(root, text = "Salir al menu principal", command = menu_1) #Se sale para escoger otro nivel o salir.
             boton_salir_menuprincipal_1.pack()
+<<<<<<< HEAD
         
         def archivo_fantasma():
             def menu_2():#Se crea una copia del menu principal para al querer volver se vuelva a poder escoger otro nivel
@@ -146,6 +159,10 @@ def menu_principal(): #Menu principal con todas sus opciones
             boton_enter1.pack()
             boton_salir_menuprincipal_2 = tk.Button(root, text = "Salir al menu principal", command = menu_2) #Se sale para escoger otro nivel o salir.
             boton_salir_menuprincipal_2.pack()
+=======
+
+
+>>>>>>> origin/Develop
 
         boton_nivel_facil.destroy()
         boton_nivel_intermedio.destroy()
@@ -189,14 +206,15 @@ def menu_principal(): #Menu principal con todas sus opciones
         
         borrar_texto()  
 
-        etiqueta_nivel_intermedio = tk.Label(root, text = "Para quienes buscan un desafio que vaya mas alla de lo basico. \nEste nivel esta pensado para quienes ya tienen cierta familiaridad con la criptografia o simplemente desean poner a prueba su ingenio con ejercicios mas elaborados. Aqui los acertijos requieren una observacion mas aguda, donde las pistas son menos evidentes y la solucion exige conectar ideas de forma creativa.")
+        etiqueta_nivel_intermedio = tk.Label(root, text = "Para quienes buscan un desafio que vaya mas alla de lo basico. \nEste nivel esta pensado para quienes ya tienen cierta familiaridad con la criptografia o simplemente desean poner a prueba su ingenio con ejercicios mas elaborados. \nAqui los acertijos requieren una observacion mas aguda, donde las pistas son menos evidentes y la solucion exige conectar ideas de forma creativa.")
         etiqueta_nivel_intermedio.pack()
         boton_opcion2_1 = tk.Button(root, text = "Opcion 1") #Falta comando para clickar esta opcion.
         boton_opcion2_1.pack() 
         boton_opcion2_2 = tk.Button(root, text = "Opcion 2") #Falta comando para clickar esta opcion.
         boton_opcion2_2.pack()
         boton_salir_menuprincipal = tk.Button(root, text = "Salir al menu principal", command = menu) #Se sale para escoger otro nivel o salir.
-        boton_salir_menuprincipal.pack()
+        boton_salir_menuprincipal.pack()  
+
     def nivel_dificil():
         def borrar_texto(): #Se borra el texto del menu principal
             etiqueta_main.config(text = "")
@@ -232,6 +250,7 @@ def menu_principal(): #Menu principal con todas sus opciones
         boton_opcion3_2.pack()
         boton_salir_menuprincipal = tk.Button(root, text = "Salir al menu principal", command = menu) #Se sale para escoger otro nivel o salir.
         boton_salir_menuprincipal.pack()
+
 
 
 
