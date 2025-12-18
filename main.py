@@ -77,13 +77,15 @@ def menu_principal():
                 pista1_1 = 5
                 nombre_grupo_hackers_hospital = "MZSYJW IFWP MFHP AJNSYNXNJYJ"
                 abecedario = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-                for ch in nombre_grupo_hackers_hospital:
-                    if ch == " ":
-                        nombre_hacker_hospital += " "
-                    else:
-                        idx = abecedario.find(ch)
-                        nombre_hacker_hospital += abecedario[(idx - pista1_1) % len(abecedario)]
+                try:
+                    for ch in nombre_grupo_hackers_hospital:
+                        if ch == " ":
+                            nombre_hacker_hospital += " "
+                        else:
+                            idx = abecedario.find(ch)
+                            nombre_hacker_hospital += abecedario[(idx - pista1_1) % len(abecedario)]
+                except ValueError:
+                    messagebox.showerror("Se ha producido un error al descifrar el mensaje.")
 
                 nombre_hacker_hospital = nombre_hacker_hospital.strip().upper()
 
@@ -93,7 +95,11 @@ def menu_principal():
                     )
                 else:
                     tk.Label(root, text="Lo siento, no es correcto.").pack()
-
+                """
+                Por cada letra en el codigo a descifrar se busca en el abecedario su posicion y se le resta el numero dado en la pista, 
+                y una vez obtenemos ese nuevo numero que es la posicion en el abecedario de la letra real del mensaje, una vez hemos acabado con todas las letras 
+                y se han ido anadiendo en la solucion se compara esta con la entrada del usuario.
+                """
             boton_enter = tk.Button(root, text="Confirmar", command=solucion_mision_hospital)
             boton_enter.pack()
             boton_salir_menuprincipal_1 = tk.Button(root, text="Salir al menu principal", command=menu_1)
@@ -143,12 +149,18 @@ def menu_principal():
                 abecedario = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 oiradeceba = "ZYXWVUTSRQPONMLKJIHGFEDCBA"
 
-                for ch in mensaje_fantasma_encriptado:
-                    if ch in oiradeceba:
-                        mensaje_fantasma += abecedario[oiradeceba.find(ch)]
-                    else:
-                        mensaje_fantasma += " "
-
+                try:
+                    for ch in mensaje_fantasma_encriptado:
+                        if ch in oiradeceba:
+                            mensaje_fantasma += abecedario[oiradeceba.find(ch)]
+                        else:
+                            mensaje_fantasma += " "
+                except ValueError:
+                    messagebox.showerror("Se ha producido un error al descifrar el mensaje.")
+                """
+                Por cada letra en el mensaje encriptado, se busca la posicion en el abecedario del reves y ese mismo numero sirve para encontrar 
+                la letra real en el abecedario normal.
+                """
                 mensaje_fantasma = mensaje_fantasma.strip().upper()
 
                 if mensaje_fantasma in input_user_archivo_fantasma:
