@@ -3,7 +3,7 @@ from tkinter import messagebox
 
 
 def solo_letras_limitado(texto):
-    if len(texto) > 40:
+    if len(texto) > 50:
         return False
     return all(c.isalpha() or c.isspace() for c in texto)
 
@@ -199,9 +199,9 @@ def menu_principal():
         def menu():#Se crea una copia del menu principal para al querer volver se vuelva a poder escoger otro nivel
             etiqueta_main = tk.Label(root, text = "Bienvenido a GlobalCrypto \nGlobalCrypto es tu puerta de entrada al mundo de la criptografia y la seguridad digital, presentado de una forma sencilla y divertida. \nDesde el menu principal podras acceder a diferentes misiones y retos disenados para que aprendas paso a paso, poniendo en practica tus conocimientos mientras disfrutas de una experiencia interactiva.\nEl programa esta organizado en niveles de dificultad (facil, intermedio y dificil), para que avances a tu ritmo y descubras nuevas opciones a medida que progresas. \nCada mision te plantea situaciones reales y dinamicas, como la Mision en el hospital o el Archivo Fantasma, que te ayudaran a comprender como funciona la criptografia en la vida cotidiana.\nGlobalCrypto no es solo una herramienta de aprendizaje: es un espacio donde podras experimentar, equivocarte sin miedo y mejorar tus habilidades de forma entretenida. \nEl menu principal sera tu punto de partida para explorar todo lo que el programa tiene preparado para ti.")
             etiqueta_main.pack()
-            boton_nivel_facil = tk.Button(root, text = "Nivel Facil", command = nivel_facil) #Comando de nivel facil falta las dos opciones de dentro.
+            boton_nivel_facil = tk.Button(root, text = "Nivel Facil", command = nivel_facil) #Comando de nivel facil.
             boton_nivel_facil.pack()
-            boton_nivel_intermedio = tk.Button(root, text = "Nivel Intermedio", command = nivel_intermedio) #Comando de nivel intermedio falta las dos opciones de dentro.
+            boton_nivel_intermedio = tk.Button(root, text = "Nivel Intermedio", command = nivel_intermedio) #Comando de nivel intermedio falta la segunda opcion de dentro.
             boton_nivel_intermedio.pack()
             boton_nivel_dificil = tk.Button(root, text = "Nivel Dificil", command = nivel_dificil) #Comando de nivel intermedio falta las dos opciones de dentro.
             boton_nivel_dificil.pack()
@@ -209,9 +209,67 @@ def menu_principal():
             boton_salir = tk.Button(root, text = "Salir", command = root.destroy) #Cerrar ventana
             boton_salir.pack()
             etiqueta_nivel_intermedio.config(text = "")
-            boton_opcion2_1.destroy()
+            boton_simbolitos.destroy()
             boton_opcion2_2.destroy()
             boton_salir_menuprincipal.destroy()
+        
+            
+        def simbolitos():
+          
+            def menu_3():
+                etiqueta_main = tk.Label(root, text = "Bienvenido a GlobalCrypto \nGlobalCrypto es tu puerta de entrada al mundo de la criptografia y la seguridad digital, presentado de una forma sencilla y divertida. \nDesde el menu principal podras acceder a diferentes misiones y retos disenados para que aprendas paso a paso, poniendo en practica tus conocimientos mientras disfrutas de una experiencia interactiva.\nEl programa esta organizado en niveles de dificultad (facil, intermedio y dificil), para que avances a tu ritmo y descubras nuevas opciones a medida que progresas. \nCada mision te plantea situaciones reales y dinamicas, como la Mision en el hospital o el Archivo Fantasma, que te ayudaran a comprender como funciona la criptografia en la vida cotidiana.\nGlobalCrypto no es solo una herramienta de aprendizaje: es un espacio donde podras experimentar, equivocarte sin miedo y mejorar tus habilidades de forma entretenida. \nEl menu principal sera tu punto de partida para explorar todo lo que el programa tiene preparado para ti.")
+                etiqueta_main.pack()
+
+                boton_nivel_facil = tk.Button(root, text="Nivel Facil", command=nivel_facil)
+                boton_nivel_facil.pack()
+                boton_nivel_intermedio = tk.Button(root, text="Nivel Intermedio", command=nivel_intermedio)
+                boton_nivel_intermedio.pack()
+                boton_nivel_dificil = tk.Button(root, text="Nivel Dificil", command=nivel_dificil)
+                boton_nivel_dificil.pack()
+                boton_salir = tk.Button(root, text="Salir", command=root.destroy)
+                boton_salir.pack()
+
+                etiqueta_simbolitos.config(text="")
+                entrada_simbolitos.destroy()
+                boton_opcion2_2.destroy()
+                boton_salir_menuprincipal_3.destroy()
+                boton_enter2.destroy()
+
+            etiqueta_simbolitos = tk.Label(root, text = "Durante una revision rutinaria en el departamento de seguridad de tu organizacion, se ha detectado un mensaje interno que aparece codificado mediante un sistema de sustitucion por simbolos. \nAntes de poder determinar su origen o relevancia, es necesario descifrarlo. Tu tarea consiste en analizar el patron utilizado, identificar las equivalencias y reconstruir el contenido original.\n Mensaje a desencriptar:\n #?_’    #?    [! %#!?+*#    ()&=+-’    ]’=    ?)%{‘})_’? \n Pista: \n M = % \n E = # \n N = ! \n S = ? \n A = + \n J = * \n E = # \n \n C = ( \n I = ) \n F = & \n R = = \n A = + \n D = - \n O = ‘ \n ")
+            etiqueta_simbolitos.pack() #Introduccion a simbolitos
+
+            boton_simbolitos.destroy()
+            boton_opcion2_2.destroy()
+            boton_salir_menuprincipal.destroy()
+            etiqueta_nivel_intermedio.config(text="")
+
+            vcmd = root.register(solo_letras_limitado)
+            entrada_simbolitos = tk.Entry(
+                root,
+                validate="key",
+                validatecommand=(vcmd, "%P")
+            )
+            entrada_simbolitos.pack()
+
+            def solucion_simbolitos():
+                input_user_simbolitos = entrada_simbolitos.get().strip().upper()
+                solucion_simbolitos = "ESTO ES UN MENSAJE CIFRADO POR SIMBOLITOS"
+                
+
+
+                if solucion_simbolitos in input_user_simbolitos:
+                    messagebox.showinfo(
+                        message="Muy bien, lo has acertado.\nLa respuesta correcta es:\nESTO ES UN MENSAJE CIFRADO POR SIMBOLITOS"
+                    )
+                else:
+                    tk.Label(root, text="Lo siento, no es correcto.").pack()
+
+
+            boton_enter2 = tk.Button(root, text="Confirmar", command=solucion_simbolitos)
+            boton_enter2.pack()
+            boton_salir_menuprincipal_3 = tk.Button(root, text="Salir al menu principal", command=menu_3)
+            boton_salir_menuprincipal_3.pack()  
+            
         boton_nivel_facil.destroy()
         boton_nivel_intermedio.destroy()
         boton_nivel_dificil.destroy()
@@ -222,8 +280,8 @@ def menu_principal():
 
         etiqueta_nivel_intermedio = tk.Label(root, text = "Para quienes buscan un desafio que vaya mas alla de lo basico. \nEste nivel esta pensado para quienes ya tienen cierta familiaridad con la criptografia o simplemente desean poner a prueba su ingenio con ejercicios mas elaborados. \nAqui los acertijos requieren una observacion mas aguda, donde las pistas son menos evidentes y la solucion exige conectar ideas de forma creativa.")
         etiqueta_nivel_intermedio.pack()
-        boton_opcion2_1 = tk.Button(root, text = "Opcion 1") #Falta comando para clickar esta opcion.
-        boton_opcion2_1.pack() 
+        boton_simbolitos = tk.Button(root, text = "Simbolitos", command = simbolitos) #Comando para clickar esta opcion.
+        boton_simbolitos.pack() 
         boton_opcion2_2 = tk.Button(root, text = "Opcion 2") #Falta comando para clickar esta opcion.
         boton_opcion2_2.pack()
         boton_salir_menuprincipal = tk.Button(root, text = "Salir al menu principal", command = menu) #Se sale para escoger otro nivel o salir.
@@ -235,9 +293,9 @@ def menu_principal():
         def menu():#Se crea una copia del menu principal para al querer volver se vuelva a poder escoger otro nivel
             etiqueta_main = tk.Label(root, text = "Bienvenido a GlobalCrypto \nGlobalCrypto es tu puerta de entrada al mundo de la criptografia y la seguridad digital, presentado de una forma sencilla y divertida. \nDesde el menu principal podras acceder a diferentes misiones y retos disenados para que aprendas paso a paso, poniendo en practica tus conocimientos mientras disfrutas de una experiencia interactiva.\nEl programa esta organizado en niveles de dificultad (facil, intermedio y dificil), para que avances a tu ritmo y descubras nuevas opciones a medida que progresas. \nCada mision te plantea situaciones reales y dinamicas, como la Mision en el hospital o el Archivo Fantasma, que te ayudaran a comprender como funciona la criptografia en la vida cotidiana.\nGlobalCrypto no es solo una herramienta de aprendizaje: es un espacio donde podras experimentar, equivocarte sin miedo y mejorar tus habilidades de forma entretenida. \nEl menu principal sera tu punto de partida para explorar todo lo que el programa tiene preparado para ti.")
             etiqueta_main.pack()
-            boton_nivel_facil = tk.Button(root, text = "Nivel Facil", command = nivel_facil) #Comando de nivel facil falta las dos opciones de dentro.
+            boton_nivel_facil = tk.Button(root, text = "Nivel Facil", command = nivel_facil) #Comando de nivel facil.
             boton_nivel_facil.pack()
-            boton_nivel_intermedio = tk.Button(root, text = "Nivel Intermedio", command = nivel_intermedio) #Comando de nivel intermedio falta las dos opciones de dentro.
+            boton_nivel_intermedio = tk.Button(root, text = "Nivel Intermedio", command = nivel_intermedio) #Comando de nivel intermedio falta la segunda opcion de dentro.
             boton_nivel_intermedio.pack()
             boton_nivel_dificil = tk.Button(root, text = "Nivel Dificil", command = nivel_dificil) #Comando de nivel intermedio falta las dos opciones de dentro.
             boton_nivel_dificil.pack()
@@ -270,9 +328,9 @@ def menu_principal():
 
     etiqueta_main = tk.Label(root, text = "Bienvenido a GlobalCrypto \nGlobalCrypto es tu puerta de entrada al mundo de la criptografia y la seguridad digital, presentado de una forma sencilla y divertida. \nDesde el menu principal podras acceder a diferentes misiones y retos disenados para que aprendas paso a paso, poniendo en practica tus conocimientos mientras disfrutas de una experiencia interactiva.\nEl programa esta organizado en niveles de dificultad (facil, intermedio y dificil), para que avances a tu ritmo y descubras nuevas opciones a medida que progresas. \nCada mision te plantea situaciones reales y dinamicas, como la Mision en el hospital o el Archivo Fantasma, que te ayudaran a comprender como funciona la criptografia en la vida cotidiana.\nGlobalCrypto no es solo una herramienta de aprendizaje: es un espacio donde podras experimentar, equivocarte sin miedo y mejorar tus habilidades de forma entretenida. \nEl menu principal sera tu punto de partida para explorar todo lo que el programa tiene preparado para ti.")
     etiqueta_main.pack()
-    boton_nivel_facil = tk.Button(root, text = "Nivel Facil", command = nivel_facil) #Comando de nivel facil falta las dos opciones de dentro.
+    boton_nivel_facil = tk.Button(root, text = "Nivel Facil", command = nivel_facil) #Comando de nivel facil.
     boton_nivel_facil.pack()
-    boton_nivel_intermedio = tk.Button(root, text = "Nivel Intermedio", command = nivel_intermedio) #Comando de nivel intermedio falta las dos opciones de dentro.
+    boton_nivel_intermedio = tk.Button(root, text = "Nivel Intermedio", command = nivel_intermedio) #Comando de nivel intermedio falta la seguna opcion de dentro.
     boton_nivel_intermedio.pack()
     boton_nivel_dificil = tk.Button(root, text = "Nivel Dificil", command = nivel_dificil) #Comando de nivel intermedio falta las dos opciones de dentro.
     boton_nivel_dificil.pack()
