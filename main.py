@@ -210,7 +210,7 @@ def menu_principal():
             boton_salir.pack()
             etiqueta_nivel_intermedio.config(text = "")
             boton_simbolitos.destroy()
-            boton_opcion2_2.destroy()
+            boton_intru.destroy()
             boton_salir_menuprincipal.destroy()
         
             
@@ -231,7 +231,7 @@ def menu_principal():
 
                 etiqueta_simbolitos.config(text="")
                 entrada_simbolitos.destroy()
-                boton_opcion2_2.destroy()
+                boton_intru.destroy()
                 boton_salir_menuprincipal_3.destroy()
                 boton_enter2.destroy()
 
@@ -239,7 +239,7 @@ def menu_principal():
             etiqueta_simbolitos.pack() #Introduccion a simbolitos
 
             boton_simbolitos.destroy()
-            boton_opcion2_2.destroy()
+            boton_intru.destroy()
             boton_salir_menuprincipal.destroy()
             etiqueta_nivel_intermedio.config(text="")
 
@@ -269,6 +269,52 @@ def menu_principal():
             boton_enter2.pack()
             boton_salir_menuprincipal_3 = tk.Button(root, text="Salir al menu principal", command=menu_3)
             boton_salir_menuprincipal_3.pack()  
+
+        def intrusion_en_la_red_electrica():
+          
+            def menu_4():
+                etiqueta_main = tk.Label(root, text = "Bienvenido a GlobalCrypto \nGlobalCrypto es tu puerta de entrada al mundo de la criptografia y la seguridad digital, presentado de una forma sencilla y divertida. \nDesde el menu principal podras acceder a diferentes misiones y retos disenados para que aprendas paso a paso, poniendo en practica tus conocimientos mientras disfrutas de una experiencia interactiva.\nEl programa esta organizado en niveles de dificultad (facil, intermedio y dificil), para que avances a tu ritmo y descubras nuevas opciones a medida que progresas. \nCada mision te plantea situaciones reales y dinamicas, como la Mision en el hospital o el Archivo Fantasma, que te ayudaran a comprender como funciona la criptografia en la vida cotidiana.\nGlobalCrypto no es solo una herramienta de aprendizaje: es un espacio donde podras experimentar, equivocarte sin miedo y mejorar tus habilidades de forma entretenida. \nEl menu principal sera tu punto de partida para explorar todo lo que el programa tiene preparado para ti.")
+                etiqueta_main.pack()
+
+                boton_nivel_facil = tk.Button(root, text="Nivel Facil", command=nivel_facil)
+                boton_nivel_facil.pack()
+                boton_nivel_intermedio = tk.Button(root, text="Nivel Intermedio", command=nivel_intermedio)
+                boton_nivel_intermedio.pack()
+                boton_nivel_dificil = tk.Button(root, text="Nivel Dificil", command=nivel_dificil)
+                boton_nivel_dificil.pack()
+                boton_salir = tk.Button(root, text="Salir", command=root.destroy)
+                boton_salir.pack()
+
+                etiqueta_intru.config(text="")
+                entrada_simbolitos.destroy()
+                boton_intru.destroy()
+                boton_salir_menuprincipal_3.destroy()
+                boton_enter2.destroy()
+
+            etiqueta_intru = tk.Label(root, text = "Trabajas en el equipo de ciberseguridad de una empresa que gestiona la red electrica de varias ciudades. \nEn las ultimas horas, se han detectado apagones intermitentes que no coinciden con ninguna incidencia fisica en las subestaciones. \nTras una investigacion inicial, el equipo sospecha que un atacante ha conseguido acceso remoto a parte de la infraestructura critica y ha manipulado algunos sistemas de control. \nAl revisar los registros de uno de los servidores de supervision, encuentras un archivo de configuracion alterado que contiene un mensaje cifrado. \nCrees que en ese mensaje esta oculto el destino de exfiltracion de los datos robados. \nTu mision consiste en descifrar el mensaje usando el cifrado de Vigenere para averiguar adonde se estan enviando los datos: ")
+            etiqueta_intru.pack() #Introduccion a simbolitos
+
+            boton_simbolitos.destroy()
+            boton_intru.destroy()
+            boton_salir_menuprincipal.destroy()
+            etiqueta_nivel_intermedio.config(text="")
+
+            vcmd = root.register(solo_letras_limitado)
+            entrada_simbolitos = tk.Entry(
+                root,
+                validate="key",
+                validatecommand=(vcmd, "%P")
+            )
+            entrada_simbolitos.pack()
+
+            def solucion_intru():
+                a=1
+
+
+            boton_enter2 = tk.Button(root, text="Confirmar", command=solucion_intru)
+            boton_enter2.pack()
+            boton_salir_menuprincipal_3 = tk.Button(root, text="Salir al menu principal", command=menu_4)
+            boton_salir_menuprincipal_3.pack()
             
         boton_nivel_facil.destroy()
         boton_nivel_intermedio.destroy()
@@ -282,8 +328,8 @@ def menu_principal():
         etiqueta_nivel_intermedio.pack()
         boton_simbolitos = tk.Button(root, text = "Simbolitos", command = simbolitos) #Comando para clickar esta opcion.
         boton_simbolitos.pack() 
-        boton_opcion2_2 = tk.Button(root, text = "Opcion 2") #Falta comando para clickar esta opcion.
-        boton_opcion2_2.pack()
+        boton_intru = tk.Button(root, text = "Intrusion en la red electrica", command = intrusion_en_la_red_electrica) #Falta comando para clickar esta opcion.
+        boton_intru.pack()
         boton_salir_menuprincipal = tk.Button(root, text = "Salir al menu principal", command = menu) #Se sale para escoger otro nivel o salir.
         boton_salir_menuprincipal.pack()  
 
