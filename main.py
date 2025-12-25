@@ -286,13 +286,17 @@ def menu_principal():
                 boton_salir.pack()
 
                 etiqueta_intru.config(text="")
-                entrada_simbolitos.destroy()
+                entrada_intru.destroy()
                 boton_intru.destroy()
                 boton_salir_menuprincipal_3.destroy()
                 boton_enter2.destroy()
 
             etiqueta_intru = tk.Label(root, text = "Trabajas en el equipo de ciberseguridad de una empresa que gestiona la red electrica de varias ciudades. \nEn las ultimas horas, se han detectado apagones intermitentes que no coinciden con ninguna incidencia fisica en las subestaciones. \nTras una investigacion inicial, el equipo sospecha que un atacante ha conseguido acceso remoto a parte de la infraestructura critica y ha manipulado algunos sistemas de control. \nAl revisar los registros de uno de los servidores de supervision, encuentras un archivo de configuracion alterado que contiene un mensaje cifrado. \nCrees que en ese mensaje esta oculto el destino de exfiltracion de los datos robados. \nTu mision consiste en descifrar el mensaje usando el cifrado de Vigenere para averiguar adonde se estan enviando los datos: ")
-            etiqueta_intru.pack() #Introduccion a simbolitos
+            etiqueta_intru.pack() #Introduccion a intrusion en la red electrica
+            clave_label = tk.Label(root, text="Clave: CLAVE")
+            clave_label.pack() #Clave
+
+
 
             boton_simbolitos.destroy()
             boton_intru.destroy()
@@ -300,18 +304,48 @@ def menu_principal():
             etiqueta_nivel_intermedio.config(text="")
 
             vcmd = root.register(solo_letras_limitado)
-            entrada_simbolitos = tk.Entry(
+            entrada_intru = tk.Entry(
                 root,
                 validate="key",
                 validatecommand=(vcmd, "%P")
             )
-            entrada_simbolitos.pack()
+            entrada_intru.pack()
+            
+            def pista():
+                with open("pista.txt", "w", encoding = "utf-8") as f:
+                    f.write("Fpsompz esjkwtmeetoi rqoo wivl")
 
-            def solucion_intru():
-                a=1
+                etiqueta_pista = tk.Label(root, text = "Abra el pista.txt")
+                etiqueta_pista.pack()
 
+            def solucion_intru(): 
+                key = "clave" 
+                text = "Fpsompz esjkwtmeetoi rqoo wivl" 
+                decrypted = "" 
+                key_index = 0 
+                for char in text: 
+                    if char.isalpha(): 
+                        shift = ord(key[key_index % len(key)]) - ord('a') 
+                        base = ord('A') if char.isupper() else ord('a') 
+                        decrypted_char = chr((ord(char) - base - shift) % 26 + base) 
+                        decrypted += decrypted_char 
+                        key_index += 1 
+                    else: 
+                        decrypted += char # Normalizar 
+                user = entrada_intru.get().strip().lower() 
+                dec = decrypted.strip().lower() 
+                if user == dec: 
+                    messagebox.showinfo( 
+                        message="Muy bien, lo has acertado.\nLa respuesta correcta es:\ndestino exfiltracion nodo beta " 
+                        )
+                else: 
+                    tk.Label(root, text="Lo siento, no es correcto.").pack()
+                
+                
 
-            boton_enter2 = tk.Button(root, text="Confirmar", command=solucion_intru)
+            boton_pista = tk.Button(root, text= "Pista", command = pista )
+            boton_pista.pack()
+            boton_enter2 = tk.Button(root, text="Confirmar", command = solucion_intru)
             boton_enter2.pack()
             boton_salir_menuprincipal_3 = tk.Button(root, text="Salir al menu principal", command=menu_4)
             boton_salir_menuprincipal_3.pack()
