@@ -312,34 +312,40 @@ def menu_principal():
             entrada_intru.pack()
             
             def pista():
-                with open("pista.txt", "w", encoding = "utf-8") as f:
-                    f.write("Fpsompz esjkwtmeetoi rqoo wivl")
+                try:
+                    with open("pista.txt", "w", encoding = "utf-8") as f:
+                        f.write("Fpsompz esjkwtmeetoi rqoo wivl")
 
-                etiqueta_pista = tk.Label(root, text = "Abra el pista.txt")
-                etiqueta_pista.pack()
+                    etiqueta_pista = tk.Label(root, text = "Abra el pista.txt")
+                    etiqueta_pista.pack()
+                except FileNotFoundError:
+                    messagebox.showerror("Se ha producido un error al buscar el archivo.")
 
             def solucion_intru(): 
                 key = "clave" 
                 text = "Fpsompz esjkwtmeetoi rqoo wivl" 
                 decrypted = "" 
                 key_index = 0 
-                for char in text: 
-                    if char.isalpha(): 
-                        shift = ord(key[key_index % len(key)]) - ord('a') 
-                        base = ord('A') if char.isupper() else ord('a') 
-                        decrypted_char = chr((ord(char) - base - shift) % 26 + base) 
-                        decrypted += decrypted_char 
-                        key_index += 1 
+                try:
+                    for char in text: 
+                        if char.isalpha(): 
+                            shift = ord(key[key_index % len(key)]) - ord('a') 
+                            base = ord('A') if char.isupper() else ord('a') 
+                            decrypted_char = chr((ord(char) - base - shift) % 26 + base) 
+                            decrypted += decrypted_char 
+                            key_index += 1 
+                        else: 
+                            decrypted += char # Normalizar 
+                    user = entrada_intru.get().strip().lower() 
+                    dec = decrypted.strip().lower() 
+                    if user == dec: 
+                        messagebox.showinfo( 
+                            message="Muy bien, lo has acertado.\nLa respuesta correcta es:\ndestino exfiltracion nodo beta " 
+                            )
                     else: 
-                        decrypted += char # Normalizar 
-                user = entrada_intru.get().strip().lower() 
-                dec = decrypted.strip().lower() 
-                if user == dec: 
-                    messagebox.showinfo( 
-                        message="Muy bien, lo has acertado.\nLa respuesta correcta es:\ndestino exfiltracion nodo beta " 
-                        )
-                else: 
-                    tk.Label(root, text="Lo siento, no es correcto.").pack()
+                        tk.Label(root, text="Lo siento, no es correcto.").pack()
+                except ValueError:
+                    messagebox.showerror("Se ha producido un error al descirar el mensaje.")
                 
                 
 
