@@ -389,9 +389,69 @@ def menu_principal():
             boton_salir = tk.Button(root, text = "Salir", command = root.destroy) #Cerrar ventana
             boton_salir.pack()
             etiqueta_nivel_dificil.config(text = "")
-            boton_opcion3_1.destroy()
+            boton_limon.destroy()
             boton_opcion3_2.destroy()
             boton_salir_menuprincipal.destroy()
+
+        def Ataque_a_la_planta_de_limones():
+          
+            def menu_5():
+                etiqueta_main = tk.Label(root, text = "Bienvenido a GlobalCrypto \nGlobalCrypto es tu puerta de entrada al mundo de la criptografia y la seguridad digital, presentado de una forma sencilla y divertida. \nDesde el menu principal podras acceder a diferentes misiones y retos disenados para que aprendas paso a paso, poniendo en practica tus conocimientos mientras disfrutas de una experiencia interactiva.\nEl programa esta organizado en niveles de dificultad (facil, intermedio y dificil), para que avances a tu ritmo y descubras nuevas opciones a medida que progresas. \nCada mision te plantea situaciones reales y dinamicas, como la Mision en el hospital o el Archivo Fantasma, que te ayudaran a comprender como funciona la criptografia en la vida cotidiana.\nGlobalCrypto no es solo una herramienta de aprendizaje: es un espacio donde podras experimentar, equivocarte sin miedo y mejorar tus habilidades de forma entretenida. \nEl menu principal sera tu punto de partida para explorar todo lo que el programa tiene preparado para ti.")
+                etiqueta_main.pack()
+
+                boton_nivel_facil = tk.Button(root, text="Nivel Facil", command=nivel_facil)
+                boton_nivel_facil.pack()
+                boton_nivel_intermedio = tk.Button(root, text="Nivel Intermedio", command=nivel_intermedio)
+                boton_nivel_intermedio.pack()
+                boton_nivel_dificil = tk.Button(root, text="Nivel Dificil", command=nivel_dificil)
+                boton_nivel_dificil.pack()
+                boton_salir = tk.Button(root, text="Salir", command=root.destroy)
+                boton_salir.pack()
+
+                etiqueta_limon.config(text="")
+                entrada_limon.destroy()
+                boton_limon.destroy()
+                boton_salir_menuprincipal_4.destroy()
+                boton_enter3.destroy()
+
+            etiqueta_limon = tk.Label(root, text = "Trabajas en el equipo de ciberseguridad de una empresa agroalimentaria que gestiona varias plantas de procesado de frutas en todo el pais. \nEn las ultimas horas, la planta principal de procesado de limones ha sufrido una parada inesperada de la cinta de clasificacion automatica. \nAl principio, el equipo de mantenimiento sospecha de un fallo mecanico, pero pronto descubren que varios sistemas de control han sido modificados de forma remota. \nAl revisar los registros de uno de los controladores industriales, encuentras un archivo con un mensaje completamente en codigo binario. \nCrees que ese mensaje revela el objetivo del ataque y podria ayudar a reconfigurar los sistemas para volver a poner en marcha la planta. \nTu mision consiste en descifrar el mensaje binario para averiguar cual es el objetivo exacto del ataque.")
+            etiqueta_limon.pack() #Introduccion a intrusion en la red electrica
+
+
+            boton_opcion3_2.destroy()
+            boton_limon.destroy()
+            boton_salir_menuprincipal.destroy()
+            etiqueta_nivel_dificil.config(text="")
+
+            vcmd = root.register(solo_letras_limitado)
+            entrada_limon = tk.Entry(
+                root,
+                validate="key",
+                validatecommand=(vcmd, "%P")
+            )
+            entrada_limon.pack()
+            
+            def pista():
+                try:
+                    with open("Limon.txt", "w", encoding = "utf-8") as f:
+                        f.write("01000001 01010100 01000001 01010001 01010101 01000101 00100000 01000001 00100000 01010000 01001100 01000001 01001110 01010100 01000001 00100000 01000100 01000101 00100000 01001100 01001001 01001101 01001111 01001110 01000101 01010011 \nCada grupo de 8 digitos binarios representa un caracter segun el codigo ASCII. \nEmpieza traduciendo 01000001 y sigue con cada grupo separado por espacios. ")
+                    etiqueta_pista = tk.Label(root, text = "Abra el Limon.txt")
+                    etiqueta_pista.pack()
+                except FileNotFoundError:
+                    messagebox.showerror("Se ha producido un error al buscar el archivo.")
+
+            def solucion_limon(): 
+                a=1
+                
+                
+
+            boton_limon_pista = tk.Button(root, text= "Pista", command = pista )
+            boton_limon_pista.pack()
+            boton_enter3 = tk.Button(root, text="Confirmar", command = solucion_limon)
+            boton_enter3.pack()
+            boton_salir_menuprincipal_4 = tk.Button(root, text="Salir al menu principal", command=menu_5)
+            boton_salir_menuprincipal_4.pack()
+
         boton_nivel_facil.destroy()
         boton_nivel_intermedio.destroy()
         boton_nivel_dificil.destroy()
@@ -402,8 +462,8 @@ def menu_principal():
 
         etiqueta_nivel_dificil = tk.Label(root, text = "Para mentes curiosas que no se conforman con lo evidente.\nEste es el espacio de los retos complejos. \nLos ejercicios aqui simulan problemas donde la criptografia se convierte en un rompecabezas intelectual de alto nivel. \nNo es solo aplicar una tecnica, sino entender la estructura del secreto, perseverar ante la ambiguedad y disfrutar de la satisfaccion que viene con descifrar lo bien oculto.")
         etiqueta_nivel_dificil.pack()
-        boton_opcion3_1 = tk.Button(root, text = "Opcion 1") #Falta comando para clickar esta opcion.
-        boton_opcion3_1.pack() 
+        boton_limon = tk.Button(root, text = "Ataque a la planta de limones", command = Ataque_a_la_planta_de_limones) 
+        boton_limon.pack() 
         boton_opcion3_2 = tk.Button(root, text = "Opcion 2") #Falta comando para clickar esta opcion.
         boton_opcion3_2.pack()
         boton_salir_menuprincipal = tk.Button(root, text = "Salir al menu principal", command = menu) #Se sale para escoger otro nivel o salir.
