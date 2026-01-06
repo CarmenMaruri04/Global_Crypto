@@ -1,0 +1,6 @@
+Se ha encriptado de tal manera: 
+1. Invertir el mensaje. 
+2. Asignar un numero a cada caracter (empezando por el 0). 
+3. Si el caracter es par se le suman 3 posiciones en el alfabeto. 
+4. Si el caracter es impar se le suman 5 posiciones. 
+5. Si el caracter no es una letra, se deja tal cual.

@@ -390,7 +390,7 @@ def menu_principal():
             boton_salir.pack()
             etiqueta_nivel_dificil.config(text = "")
             boton_limon.destroy()
-            boton_opcion3_2.destroy()
+            boton_zoo.destroy()
             boton_salir_menuprincipal.destroy()
 
         def Ataque_a_la_planta_de_limones():
@@ -418,7 +418,7 @@ def menu_principal():
             etiqueta_limon.pack() #Introduccion 
 
 
-            boton_opcion3_2.destroy()
+            boton_zoo.destroy()
             boton_limon.destroy()
             boton_salir_menuprincipal.destroy()
             etiqueta_nivel_dificil.config(text="")
@@ -450,7 +450,6 @@ def menu_principal():
                         numero = int(byte, 2)
                         caracter = chr(numero)
                         mensaje += caracter
-                print(mensaje)
                 mensaje_normalizado = mensaje.strip().upper() 
                 if mensaje_normalizado == entrada_limon.get():
                     messagebox.showinfo( 
@@ -465,6 +464,96 @@ def menu_principal():
             boton_enter3.pack()
             boton_salir_menuprincipal_4 = tk.Button(root, text="Salir al menu principal", command=menu_5)
             boton_salir_menuprincipal_4.pack()
+        
+            
+        def objetos_perdidos_zoo():
+            def menu_6():
+                etiqueta_main = tk.Label(root, text = "Bienvenido a GlobalCrypto \nGlobalCrypto es tu puerta de entrada al mundo de la criptografia y la seguridad digital, presentado de una forma sencilla y divertida. \nDesde el menu principal podras acceder a diferentes misiones y retos disenados para que aprendas paso a paso, poniendo en practica tus conocimientos mientras disfrutas de una experiencia interactiva.\nEl programa esta organizado en niveles de dificultad (facil, intermedio y dificil), para que avances a tu ritmo y descubras nuevas opciones a medida que progresas. \nCada mision te plantea situaciones reales y dinamicas, como la Mision en el hospital o el Archivo Fantasma, que te ayudaran a comprender como funciona la criptografia en la vida cotidiana.\nGlobalCrypto no es solo una herramienta de aprendizaje: es un espacio donde podras experimentar, equivocarte sin miedo y mejorar tus habilidades de forma entretenida. \nEl menu principal sera tu punto de partida para explorar todo lo que el programa tiene preparado para ti.")
+                etiqueta_main.pack()
+
+                boton_nivel_facil = tk.Button(root, text="Nivel Facil", command=nivel_facil)
+                boton_nivel_facil.pack()
+                boton_nivel_intermedio = tk.Button(root, text="Nivel Intermedio", command=nivel_intermedio)
+                boton_nivel_intermedio.pack()
+                boton_nivel_dificil = tk.Button(root, text="Nivel Dificil", command=nivel_dificil)
+                boton_nivel_dificil.pack()
+                boton_salir = tk.Button(root, text="Salir", command=root.destroy)
+                boton_salir.pack()
+
+                etiqueta_zoo.config(text="")
+                entrada_zoo.destroy()
+                boton_zoo.destroy()
+                boton_salir_menuprincipal_4.destroy()
+                boton_enter4.destroy()
+
+            etiqueta_zoo = tk.Label(root, text = "En el zoologico se gestionan diariamente numerosos avisos relacionados con objetos extraviados por los visitantes. \nLa mayoria de estos casos son simples incidencias que se resuelven con rapidez, ya que suelen tratarse de pertenencias personales olvidadas en distintos rincones. \nNo obstante, en esta ocasion se ha registrado un informe que no encaja con las categorias habituales. \nEl objetivo de este ejercicio es analizar dicha incidencia y determinar cual ha sido el objeto extraviado. ")
+            etiqueta_zoo.pack() #Introduccion 
+
+
+            boton_zoo.destroy()
+            boton_limon.destroy()
+            boton_salir_menuprincipal.destroy()
+            etiqueta_nivel_dificil.config(text="")
+
+            vcmd = root.register(solo_letras_limitado)
+            entrada_zoo = tk.Entry(
+                root,
+                validate="key",
+                validatecommand=(vcmd, "%P")
+            )
+            entrada_zoo.pack()
+            
+            def mensaje_zoo():
+                try:
+                    with open("MensajeZoo.txt", "w", encoding = "utf-8") as f:
+                        f.write("Nos dan la siguiente información de tal objeto:\n ryhoet sx rs fwfj dsx vj nznp")
+                    etiqueta_mensajezoo = tk.Label(root, text = "Abra el MensajeZoo.txt")
+                    etiqueta_mensajezoo.pack()
+                except FileNotFoundError:
+                    messagebox.showerror("Se ha producido un error al buscar el archivo.")
+
+            def ayuda_zoo():
+                try:
+                    with open("AyudaZoo.txt", "w", encoding = "utf-8") as f:
+                        f.write("Se ha encriptado de tal manera: \n1. Invertir el mensaje. \n2. Asignar un numero a cada caracter (empezando por el 0). \n3. Si el caracter es par se le suman 3 posiciones en el alfabeto. \n4. Si el caracter es impar se le suman 5 posiciones. \n5. Si el caracter no es una letra, se deja tal cual.")
+                    etiqueta_ayudazoo = tk.Label(root, text = "Abra el MensajeZoo.txt")
+                    etiqueta_ayudazoo.pack()
+                except FileNotFoundError:
+                    messagebox.showerror("Se ha producido un error al buscar el archivo.")
+            
+            def solucion_zoo():
+                mensaje_cifrado = "ryhoet sx rs fwfj dsx vj nznp"
+                invertido = mensaje_cifrado[::-1] 
+                resultado = [] 
+                for i, c in enumerate(invertido):
+                    if 'a' <= c <= 'z': 
+                        pos = ord(c) - ord('a') 
+                        if i % 2 == 0: 
+                            nueva_pos = (pos - 3) % 26 
+                        else: 
+                            nueva_pos = (pos - 5) % 26 
+                        resultado.append(chr(nueva_pos + ord('a'))) 
+                    else: 
+                        resultado.append(c) 
+                solucion_objetos_perdidos = ''.join(resultado)                
+                
+                if solucion_objetos_perdidos in entrada_zoo.get():
+                    messagebox.showinfo( 
+                            message="Muy bien, lo has acertado.\nLa respuesta correcta es:\nMiwi es una gata no un objeto" 
+                            )
+                else: 
+                    tk.Label(root, text="Lo siento, no es correcto.").pack()
+
+            boton_zoo_mensaje = tk.Button(root, text= "Mensaje", command = mensaje_zoo )
+            boton_zoo_mensaje.pack()
+            boton_zoo_ayuda = tk.Button(root, text= "Ayuda", command = ayuda_zoo )
+            boton_zoo_ayuda.pack()
+            boton_enter4 = tk.Button(root, text="Confirmar", command = solucion_zoo)
+            boton_enter4.pack()
+            boton_salir_menuprincipal_4 = tk.Button(root, text="Salir al menu principal", command=menu_6)
+            boton_salir_menuprincipal_4.pack()
+
+
 
         boton_nivel_facil.destroy()
         boton_nivel_intermedio.destroy()
@@ -478,8 +567,8 @@ def menu_principal():
         etiqueta_nivel_dificil.pack()
         boton_limon = tk.Button(root, text = "Ataque a la planta de limones", command = Ataque_a_la_planta_de_limones) 
         boton_limon.pack() 
-        boton_opcion3_2 = tk.Button(root, text = "Opcion 2") #Falta comando para clickar esta opcion.
-        boton_opcion3_2.pack()
+        boton_zoo = tk.Button(root, text = "Objetos perdidos del zoologico", command = objetos_perdidos_zoo) #Falta comando para clickar esta opcion.
+        boton_zoo.pack()
         boton_salir_menuprincipal = tk.Button(root, text = "Salir al menu principal", command = menu) #Se sale para escoger otro nivel o salir.
         boton_salir_menuprincipal.pack()
 
