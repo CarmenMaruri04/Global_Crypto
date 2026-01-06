@@ -414,8 +414,8 @@ def menu_principal():
                 boton_salir_menuprincipal_4.destroy()
                 boton_enter3.destroy()
 
-            etiqueta_limon = tk.Label(root, text = "Trabajas en el equipo de ciberseguridad de una empresa agroalimentaria que gestiona varias plantas de procesado de frutas en todo el pais. \nEn las ultimas horas, la planta principal de procesado de limones ha sufrido una parada inesperada de la cinta de clasificacion automatica. \nAl principio, el equipo de mantenimiento sospecha de un fallo mecanico, pero pronto descubren que varios sistemas de control han sido modificados de forma remota. \nAl revisar los registros de uno de los controladores industriales, encuentras un archivo con un mensaje completamente en codigo binario. \nCrees que ese mensaje revela el objetivo del ataque y podria ayudar a reconfigurar los sistemas para volver a poner en marcha la planta. \nTu mision consiste en descifrar el mensaje binario para averiguar cual es el objetivo exacto del ataque.")
-            etiqueta_limon.pack() #Introduccion a intrusion en la red electrica
+            etiqueta_limon = tk.Label(root, text = "Trabajas en el equipo de ciberseguridad de una empresa agroalimentaria que gestiona varias plantas de procesado de frutas en todo el pais. \nEn las ultimas horas, la planta principal de procesado de limones ha sufrido una parada inesperada de la cinta de clasificacion automatica. \nAl principio, el equipo de mantenimiento sospecha de un fallo mecanico, pero pronto descubren que varios sistemas de control han sido modificados de forma remota. \nAl revisar los registros de uno de los controladores industriales, encuentras un archivo con un mensaje completamente en codigo binario. \nCrees que ese mensaje revela el objetivo del ataque y podria ayudar a reconfigurar los sistemas para volver a poner en marcha la planta. \nTu mision consiste en descifrar el mensaje binario para averiguar cual es el objetivo exacto del ataque. \nLa respuesta ha de ser en mayuculas ;)")
+            etiqueta_limon.pack() #Introduccion 
 
 
             boton_opcion3_2.destroy()
@@ -441,9 +441,23 @@ def menu_principal():
                     messagebox.showerror("Se ha producido un error al buscar el archivo.")
 
             def solucion_limon(): 
-                a=1
-                
-                
+                binario = """ 01000001 01010100 01000001 01010001 01010101 01000101 00100000 01000001 00100000 01010000 01001100 01000001 01001110 01010100 01000001 00100000 01000100 01000101 00100000 01001100 01001001 01001101 01001111 01001110 01000101 01010011 """
+                binario = binario.replace("\n", " ").strip()
+                bytes_binarios = binario.split(" ")
+                mensaje = "" 
+                for byte in bytes_binarios: 
+                    if byte:
+                        numero = int(byte, 2)
+                        caracter = chr(numero)
+                        mensaje += caracter
+                print(mensaje)
+                mensaje_normalizado = mensaje.strip().upper() 
+                if mensaje_normalizado == entrada_limon.get():
+                    messagebox.showinfo( 
+                            message="Muy bien, lo has acertado.\nLa respuesta correcta es:\nATAQUE A PLANTA DE LIMONES " 
+                            )
+                else: 
+                    tk.Label(root, text="Lo siento, no es correcto.").pack()
 
             boton_limon_pista = tk.Button(root, text= "Pista", command = pista )
             boton_limon_pista.pack()
