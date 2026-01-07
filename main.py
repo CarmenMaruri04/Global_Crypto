@@ -201,9 +201,9 @@ def menu_principal():
             etiqueta_main.pack()
             boton_nivel_facil = tk.Button(root, text = "Nivel Facil", command = nivel_facil) #Comando de nivel facil.
             boton_nivel_facil.pack()
-            boton_nivel_intermedio = tk.Button(root, text = "Nivel Intermedio", command = nivel_intermedio) #Comando de nivel intermedio falta la segunda opcion de dentro.
+            boton_nivel_intermedio = tk.Button(root, text = "Nivel Intermedio", command = nivel_intermedio) #Comando de nivel intermedio.
             boton_nivel_intermedio.pack()
-            boton_nivel_dificil = tk.Button(root, text = "Nivel Dificil", command = nivel_dificil) #Comando de nivel intermedio falta las dos opciones de dentro.
+            boton_nivel_dificil = tk.Button(root, text = "Nivel Dificil", command = nivel_dificil) #Comando de nivel dificil.
             boton_nivel_dificil.pack()
 
             boton_salir = tk.Button(root, text = "Salir", command = root.destroy) #Cerrar ventana
@@ -366,9 +366,9 @@ def menu_principal():
 
         etiqueta_nivel_intermedio = tk.Label(root, text = "Para quienes buscan un desafio que vaya mas alla de lo basico. \nEste nivel esta pensado para quienes ya tienen cierta familiaridad con la criptografia o simplemente desean poner a prueba su ingenio con ejercicios mas elaborados. \nAqui los acertijos requieren una observacion mas aguda, donde las pistas son menos evidentes y la solucion exige conectar ideas de forma creativa.")
         etiqueta_nivel_intermedio.pack()
-        boton_simbolitos = tk.Button(root, text = "Simbolitos", command = simbolitos) #Comando para clickar esta opcion.
+        boton_simbolitos = tk.Button(root, text = "Simbolitos", command = simbolitos) 
         boton_simbolitos.pack() 
-        boton_intru = tk.Button(root, text = "Intrusion en la red electrica", command = intrusion_en_la_red_electrica) #Falta comando para clickar esta opcion.
+        boton_intru = tk.Button(root, text = "Intrusion en la red electrica", command = intrusion_en_la_red_electrica) 
         boton_intru.pack()
         boton_salir_menuprincipal = tk.Button(root, text = "Salir al menu principal", command = menu) #Se sale para escoger otro nivel o salir.
         boton_salir_menuprincipal.pack()  
@@ -381,9 +381,9 @@ def menu_principal():
             etiqueta_main.pack()
             boton_nivel_facil = tk.Button(root, text = "Nivel Facil", command = nivel_facil) #Comando de nivel facil.
             boton_nivel_facil.pack()
-            boton_nivel_intermedio = tk.Button(root, text = "Nivel Intermedio", command = nivel_intermedio) #Comando de nivel intermedio falta la segunda opcion de dentro.
+            boton_nivel_intermedio = tk.Button(root, text = "Nivel Intermedio", command = nivel_intermedio) #Comando de nivel intermedio.
             boton_nivel_intermedio.pack()
-            boton_nivel_dificil = tk.Button(root, text = "Nivel Dificil", command = nivel_dificil) #Comando de nivel intermedio falta las dos opciones de dentro.
+            boton_nivel_dificil = tk.Button(root, text = "Nivel Dificil", command = nivel_dificil) #Comando de nivel dificil.
             boton_nivel_dificil.pack()
 
             boton_salir = tk.Button(root, text = "Salir", command = root.destroy) #Cerrar ventana
@@ -415,7 +415,7 @@ def menu_principal():
                 boton_enter3.destroy()
 
             etiqueta_limon = tk.Label(root, text = "Trabajas en el equipo de ciberseguridad de una empresa agroalimentaria que gestiona varias plantas de procesado de frutas en todo el pais. \nEn las ultimas horas, la planta principal de procesado de limones ha sufrido una parada inesperada de la cinta de clasificacion automatica. \nAl principio, el equipo de mantenimiento sospecha de un fallo mecanico, pero pronto descubren que varios sistemas de control han sido modificados de forma remota. \nAl revisar los registros de uno de los controladores industriales, encuentras un archivo con un mensaje completamente en codigo binario. \nCrees que ese mensaje revela el objetivo del ataque y podria ayudar a reconfigurar los sistemas para volver a poner en marcha la planta. \nTu mision consiste en descifrar el mensaje binario para averiguar cual es el objetivo exacto del ataque. \nLa respuesta ha de ser en mayuculas ;)")
-            etiqueta_limon.pack() #Introduccion 
+            etiqueta_limon.pack() #Introduccion ataque a la planta de limones
 
 
             boton_zoo.destroy()
@@ -445,18 +445,21 @@ def menu_principal():
                 binario = binario.replace("\n", " ").strip()
                 bytes_binarios = binario.split(" ")
                 mensaje = "" 
-                for byte in bytes_binarios: 
-                    if byte:
-                        numero = int(byte, 2)
-                        caracter = chr(numero)
-                        mensaje += caracter
-                mensaje_normalizado = mensaje.strip().upper() 
-                if mensaje_normalizado == entrada_limon.get():
-                    messagebox.showinfo( 
-                            message="Muy bien, lo has acertado.\nLa respuesta correcta es:\nATAQUE A PLANTA DE LIMONES " 
-                            )
-                else: 
-                    tk.Label(root, text="Lo siento, no es correcto.").pack()
+                try:
+                    for byte in bytes_binarios: 
+                        if byte:
+                            numero = int(byte, 2)
+                            caracter = chr(numero)
+                            mensaje += caracter
+                    mensaje_normalizado = mensaje.strip().upper() 
+                    if mensaje_normalizado == entrada_limon.get():
+                        messagebox.showinfo( 
+                                message="Muy bien, lo has acertado.\nLa respuesta correcta es:\nATAQUE A PLANTA DE LIMONES " 
+                                )
+                    else: 
+                        tk.Label(root, text="Lo siento, no es correcto.").pack()
+                except ValueError:
+                    messagebox.showerror("Se ha producido un error al descirar el mensaje.")
 
             boton_limon_pista = tk.Button(root, text= "Pista", command = pista )
             boton_limon_pista.pack()
@@ -487,7 +490,7 @@ def menu_principal():
                 boton_enter4.destroy()
 
             etiqueta_zoo = tk.Label(root, text = "En el zoologico se gestionan diariamente numerosos avisos relacionados con objetos extraviados por los visitantes. \nLa mayoria de estos casos son simples incidencias que se resuelven con rapidez, ya que suelen tratarse de pertenencias personales olvidadas en distintos rincones. \nNo obstante, en esta ocasion se ha registrado un informe que no encaja con las categorias habituales. \nEl objetivo de este ejercicio es analizar dicha incidencia y determinar cual ha sido el objeto extraviado. ")
-            etiqueta_zoo.pack() #Introduccion 
+            etiqueta_zoo.pack() #Introduccion a objetos perdidos
 
 
             boton_zoo.destroy()
@@ -525,24 +528,27 @@ def menu_principal():
                 mensaje_cifrado = "ryhoet sx rs fwfj dsx vj nznp"
                 invertido = mensaje_cifrado[::-1] 
                 resultado = [] 
-                for i, c in enumerate(invertido):
-                    if 'a' <= c <= 'z': 
-                        pos = ord(c) - ord('a') 
-                        if i % 2 == 0: 
-                            nueva_pos = (pos - 3) % 26 
+                try:
+                    for i, c in enumerate(invertido):
+                        if 'a' <= c <= 'z': 
+                            pos = ord(c) - ord('a') 
+                            if i % 2 == 0: 
+                                nueva_pos = (pos - 3) % 26 
+                            else: 
+                                nueva_pos = (pos - 5) % 26 
+                            resultado.append(chr(nueva_pos + ord('a'))) 
                         else: 
-                            nueva_pos = (pos - 5) % 26 
-                        resultado.append(chr(nueva_pos + ord('a'))) 
-                    else: 
-                        resultado.append(c) 
-                solucion_objetos_perdidos = ''.join(resultado)                
+                            resultado.append(c) 
+                    solucion_objetos_perdidos = ''.join(resultado)                
                 
-                if solucion_objetos_perdidos in entrada_zoo.get():
-                    messagebox.showinfo( 
-                            message="Muy bien, lo has acertado.\nLa respuesta correcta es:\nMiwi es una gata no un objeto" 
-                            )
-                else: 
-                    tk.Label(root, text="Lo siento, no es correcto.").pack()
+                    if solucion_objetos_perdidos in entrada_zoo.get():
+                        messagebox.showinfo( 
+                                message="Muy bien, lo has acertado.\nLa respuesta correcta es:\nMiwi es una gata no un objeto" 
+                                )
+                    else: 
+                        tk.Label(root, text="Lo siento, no es correcto.").pack()
+                except ValueError:
+                    messagebox.showerror("Se ha producido un error al descirar el mensaje.")
 
             boton_zoo_mensaje = tk.Button(root, text= "Mensaje", command = mensaje_zoo )
             boton_zoo_mensaje.pack()
@@ -567,7 +573,7 @@ def menu_principal():
         etiqueta_nivel_dificil.pack()
         boton_limon = tk.Button(root, text = "Ataque a la planta de limones", command = Ataque_a_la_planta_de_limones) 
         boton_limon.pack() 
-        boton_zoo = tk.Button(root, text = "Objetos perdidos del zoologico", command = objetos_perdidos_zoo) #Falta comando para clickar esta opcion.
+        boton_zoo = tk.Button(root, text = "Objetos perdidos del zoologico", command = objetos_perdidos_zoo) 
         boton_zoo.pack()
         boton_salir_menuprincipal = tk.Button(root, text = "Salir al menu principal", command = menu) #Se sale para escoger otro nivel o salir.
         boton_salir_menuprincipal.pack()
@@ -579,9 +585,9 @@ def menu_principal():
     etiqueta_main.pack()
     boton_nivel_facil = tk.Button(root, text = "Nivel Facil", command = nivel_facil) #Comando de nivel facil.
     boton_nivel_facil.pack()
-    boton_nivel_intermedio = tk.Button(root, text = "Nivel Intermedio", command = nivel_intermedio) #Comando de nivel intermedio falta la seguna opcion de dentro.
+    boton_nivel_intermedio = tk.Button(root, text = "Nivel Intermedio", command = nivel_intermedio) #Comando de nivel intermedio.
     boton_nivel_intermedio.pack()
-    boton_nivel_dificil = tk.Button(root, text = "Nivel Dificil", command = nivel_dificil) #Comando de nivel intermedio falta las dos opciones de dentro.
+    boton_nivel_dificil = tk.Button(root, text = "Nivel Dificil", command = nivel_dificil) #Comando de nivel dificil.
     boton_nivel_dificil.pack()
 
     boton_salir = tk.Button(root, text = "Salir", command = root.destroy) #Cerrar ventana
