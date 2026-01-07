@@ -1,0 +1,5 @@
+NIVEL DIFICIL: OPERACIONES AVANZADAS
+        Para mentes curiosas que no se conforman con lo evidente.
+        Este es el espacio de los retos complejos. 
+        Los ejercicios aqui simulan problemas donde la criptografia se convierte en un rompecabezas intelectual de alto nivel. 
+        No es solo aplicar una tecnica, sino entender la estructura del secreto, perseverar ante la ambiguedad y disfrutar de la satisfaccion que viene con descifrar lo bien oculto.

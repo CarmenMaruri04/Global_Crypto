@@ -1,0 +1,4 @@
+NIVEL INTERMEDIO: PROFUNDIZANDO
+        Para quienes buscan un desafio que vaya mas alla de lo basico.
+        Este nivel esta pensado para quienes ya tienen cierta familiaridad con la criptografia o simplemente desean poner a prueba su ingenio con ejercicios mas elaborados. 
+        Aqui los acertijos requieren una observacion mas aguda, donde las pistas son menos evidentes y la solucion exige conectar ideas de forma creativa.
